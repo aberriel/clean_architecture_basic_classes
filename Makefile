@@ -64,9 +64,9 @@ tests: ## test and lint
 
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/playerstars_domain.rst
+	rm -f docs/clean_architecture_basic_classes.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ playerstars_domain
+	sphinx-apidoc -o docs/ clean_architecture_basic_classes
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 
