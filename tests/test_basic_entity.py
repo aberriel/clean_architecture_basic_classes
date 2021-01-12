@@ -4,7 +4,8 @@ from marshmallow import fields, post_load
 from pytest import fixture
 
 from clean_architecture_basic_classes import BasicEntity
-from clean_architecture_basic_classes.basic_domain.basic_entity import missing_id
+from clean_architecture_basic_classes.basic_domain.basic_entity import \
+    missing_id
 from clean_architecture_basic_classes.basic_domain.util import \
     generic_serialize_roundtrip_test
 

@@ -2,7 +2,8 @@ from unittest.mock import MagicMock
 
 from pytest import fixture
 
-from clean_architecture_basic_classes.basic_persist_adapter import BasicPersistAdapter
+from clean_architecture_basic_classes.basic_persist_adapter import \
+    BasicPersistAdapter
 from uuid import uuid4
 
 

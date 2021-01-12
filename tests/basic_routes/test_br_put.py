@@ -3,8 +3,10 @@ from unittest.mock import MagicMock, patch
 from marshmallow import ValidationError
 from pytest import raises
 
-from clean_architecture_basic_classes.basic_interactors import UpdateEntityException
-from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
+from clean_architecture_basic_classes.basic_interactors import \
+    UpdateEntityException
+from clean_architecture_basic_classes.basic_routes.basic_routes import \
+    BasicEntityRoutes
 from clean_architecture_basic_classes.basic_routes.exceptions import (
     ValidationErrorException,
     UnexpectedErrorException, PutException)

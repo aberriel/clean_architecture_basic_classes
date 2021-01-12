@@ -6,7 +6,8 @@ from tests.basic_interactor.fixtures import (
     FakeAdapter,
     make_context
 )
-from clean_architecture_basic_classes.basic_interactors import BasicGetAllInteractor
+from clean_architecture_basic_classes.basic_interactors import \
+    BasicGetAllInteractor
 
 
 def test_basic_getall():

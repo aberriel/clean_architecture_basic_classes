@@ -12,15 +12,14 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     author="Anselmo Lira (https://github.com/aberriel)",
-    python_requires='>=3.7',
+    python_requires='>=3.8',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'Natural Language :: English',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    description="Classes to implement a Clean Architecure Python Framework",
+    description="Classes to implement a Clean Architecture Python Framework",
     entry_points={
         'console_scripts': [
             'clean_architecture_basic_classes=clean_architecture_basic_classes.cli:main',
