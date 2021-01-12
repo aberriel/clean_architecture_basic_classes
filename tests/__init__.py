@@ -1,1 +1,1 @@
-"""Unit test package for clapy_basic_classes."""
+"""Unit test package for clean_architecture_basic_classes."""

@@ -3,15 +3,16 @@ from unittest.mock import MagicMock, patch
 from marshmallow import ValidationError
 from pytest import raises
 
-from clapy_basic_classes.basic_interactors import SaveEntityException
-from clapy_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
-from clapy_basic_classes.basic_routes.exceptions import (
+from clean_architecture_basic_classes.basic_interactors import SaveEntityException
+from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
+from clean_architecture_basic_classes.basic_routes.exceptions import (
     ValidationErrorException,
-    UnexpectedErrorException, PostException)
+    UnexpectedErrorException,
+    PostException)
 
 
 class Patches:
-    pkg_prefix = 'clapy_basic_classes.basic_routes.basic_routes'
+    pkg_prefix = 'clean_architecture_basic_classes.basic_routes.basic_routes'
     PostRequest = f'{pkg_prefix}.BasicPostRequestModel'
 
 

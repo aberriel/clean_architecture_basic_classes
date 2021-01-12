@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = clapy_basic_classes
+SPHINXPROJ    = clean_architecture_basic_classes
 SOURCEDIR     = .
 BUILDDIR      = _build
 

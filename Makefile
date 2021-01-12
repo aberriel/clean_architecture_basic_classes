@@ -1,4 +1,4 @@
-DEVPI_URL ?= https://devpi.qa.stormsec.com.br/deploy/dev/+simple
+DEVPI_URL ?= https://pypi.org/
 
 .PHONY: clean clean-test clean-pyc clean-build docs help tests uninstall_all install install_dev
 .DEFAULT_GOAL := help
@@ -56,9 +56,9 @@ clean-test: ## remove test and coverage artifacts
 
 
 tests: ## test and lint
-	python3 -m pytest -v --cov=tests --cov=clapy_basic_classes --cov-report term-missing:skip-covered
+	python3 -m pytest -v --cov=tests --cov=clean_architecture_basic_classes --cov-report term-missing:skip-covered
 	@echo "Linting..."
-	@flake8 clapy_basic_classes/ --max-complexity=5
+	@flake8 clean_architecture_basic_classes/ --max-complexity=5
 	@flake8 tests/ --ignore=S101,S311,F811
 	@echo "\033[32mTudo certo!"
 

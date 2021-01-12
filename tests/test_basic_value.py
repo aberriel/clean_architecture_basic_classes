@@ -1,6 +1,6 @@
 from marshmallow import fields, post_load
-from clapy_basic_classes import BasicValue
-from clapy_basic_classes.basic_domain.util import \
+from clean_architecture_basic_classes import BasicValue
+from clean_architecture_basic_classes.basic_domain.util import \
     generic_serialize_roundtrip_test
 
 

@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=.
 set BUILDDIR=_build
-set SPHINXPROJ=clapy_basic_classes
+set SPHINXPROJ=clean_architecture_basic_classes
 
 if "%1" == "" goto help
 

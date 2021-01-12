@@ -2,13 +2,13 @@ from unittest.mock import MagicMock, patch
 
 from pytest import raises
 
-from clapy_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
-from clapy_basic_classes.basic_routes.exceptions import (
+from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
+from clean_architecture_basic_classes.basic_routes.exceptions import (
     UnexpectedErrorException, NotFoundException)
 
 
 class Patches:
-    pkg_prefix = 'clapy_basic_classes.basic_routes.basic_routes'
+    pkg_prefix = 'clean_architecture_basic_classes.basic_routes.basic_routes'
     DeleteRequest = f'{pkg_prefix}.BasicDeleteRequestModel'
     DeleteInteractor = f'{pkg_prefix}.BasicDeleteInteractor'
 

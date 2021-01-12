@@ -2,7 +2,7 @@ from unittest.mock import MagicMock
 
 from pytest import raises
 
-from clapy_basic_classes.basic_interactors import (
+from clean_architecture_basic_classes.basic_interactors import (
     BasicPutInteractor,
     BasicPutRequestModel,
     UpdateEntityException)

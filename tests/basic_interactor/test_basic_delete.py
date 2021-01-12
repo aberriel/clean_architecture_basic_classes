@@ -1,10 +1,9 @@
-from clapy_basic_classes.basic_interactors import (BasicDeleteInteractor,
-                                                   BasicDeleteRequestModel
-                                                   )
+from clean_architecture_basic_classes.basic_interactors import (
+    BasicDeleteInteractor,
+    BasicDeleteRequestModel)
 from tests.basic_interactor.fixtures import (
     FakeAdapter,
-    make_context
-)
+    make_context)
 
 
 def test_basic_delete():

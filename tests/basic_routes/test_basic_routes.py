@@ -1,10 +1,10 @@
 from unittest.mock import MagicMock, patch
 
-from clapy_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
+from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
 
 
 class Patches:
-    pkg_prefix = 'clapy_basic_classes.basic_routes.basic_routes'
+    pkg_prefix = 'clean_architecture_basic_classes.basic_routes.basic_routes'
     PostRequest = f'{pkg_prefix}.BasicPostRequestModel'
     PostInteractor = f'{pkg_prefix}.BasicPostInteractor'
     DeleteRequest = f'{pkg_prefix}.BasicDeleteRequestModel'

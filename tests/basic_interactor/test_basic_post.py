@@ -5,11 +5,10 @@ from tests.basic_interactor.fixtures import (
     FakeEntity,
     make_context
 )
-from clapy_basic_classes.basic_interactors import (
+from clean_architecture_basic_classes.basic_interactors import (
     BasicPostInteractor,
     BasicPostRequestModel,
-    SaveEntityException
-)
+    SaveEntityException)
 
 
 def test_basic_post():

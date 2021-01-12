@@ -1,11 +1,9 @@
-from clapy_basic_classes.basic_interactors import (
+from clean_architecture_basic_classes.basic_interactors import (
     BasicGetInteractor,
-    BasicGetRequestModel
-)
+    BasicGetRequestModel)
 from tests.basic_interactor.fixtures import (
     FakeAdapter,
-    make_context
-)
+    make_context)
 
 
 def test_basic_get():

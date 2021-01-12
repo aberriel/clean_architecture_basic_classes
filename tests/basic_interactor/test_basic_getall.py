@@ -1,12 +1,12 @@
 from unittest.mock import MagicMock
 
-from clapy_basic_classes.basic_interactors.basic_get_all import \
+from clean_architecture_basic_classes.basic_interactors.basic_get_all import \
     BasicGetAllRequestModel
 from tests.basic_interactor.fixtures import (
     FakeAdapter,
     make_context
 )
-from clapy_basic_classes.basic_interactors import BasicGetAllInteractor
+from clean_architecture_basic_classes.basic_interactors import BasicGetAllInteractor
 
 
 def test_basic_getall():

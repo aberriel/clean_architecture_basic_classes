@@ -2,7 +2,7 @@ from datetime import datetime
 
 from pytest import fixture
 
-from clapy_basic_classes.basic_scheduler_adapter import \
+from clean_architecture_basic_classes.basic_scheduler_adapter import \
     BasicTaskSchedulerAdapter
 
 

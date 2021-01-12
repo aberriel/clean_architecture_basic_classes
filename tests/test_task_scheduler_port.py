@@ -1,9 +1,7 @@
-from unittest.mock import MagicMock
-
-from pytest import fixture
-
-from clapy_basic_classes.basic_domain.task_scheduler_port import \
+from clean_architecture_basic_classes.basic_domain.task_scheduler_port import \
     TaskSchedulerPort
+from pytest import fixture
+from unittest.mock import MagicMock
 
 
 @fixture

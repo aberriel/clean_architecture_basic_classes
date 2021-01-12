@@ -19,4 +19,4 @@ Uma vez instalado, instale o pacote com:
     $ python setup.py install
 
 
-.. _GitLab repo: 'https://gitlab.com/stormsecurity/ca-framework/clapy_basic_classes'
+.. _Github repo: 'https://github.com/aberriel/clean_architecture_basic_classes'

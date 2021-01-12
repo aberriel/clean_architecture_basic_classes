@@ -1,5 +1,5 @@
 from marshmallow import fields, post_load
-from clapy_basic_classes import BasicEntity
+from clean_architecture_basic_classes import BasicEntity
 from uuid import uuid4
 
 

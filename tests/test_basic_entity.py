@@ -3,9 +3,9 @@ from unittest.mock import MagicMock, patch
 from marshmallow import fields, post_load
 from pytest import fixture
 
-from clapy_basic_classes import BasicEntity
-from clapy_basic_classes.basic_domain.basic_entity import missing_id
-from clapy_basic_classes.basic_domain.util import \
+from clean_architecture_basic_classes import BasicEntity
+from clean_architecture_basic_classes.basic_domain.basic_entity import missing_id
+from clean_architecture_basic_classes.basic_domain.util import \
     generic_serialize_roundtrip_test
 
 
@@ -90,7 +90,6 @@ def test_basic_entity_eq(dummy_complex_entity):
 
 def test_basic_entity_serialize(dummy_complex_entity):
     entity = dummy_complex_entity('the_id', 'texto', 42)
-
     generic_serialize_roundtrip_test(dummy_complex_entity, entity)
 
 
@@ -105,7 +104,7 @@ def test_basic_entity_hashable(dummy_complex_entity):
     assert len(s) == 2
 
 
-@patch('clapy_basic_classes.basic_domain.basic_entity.uuid4')
+@patch('clean_architecture_basic_classes.basic_domain.basic_entity.uuid4')
 def test_missing_id(uuid4_mock):
     new_id = missing_id()
     uuid4_mock.assert_called_once()
