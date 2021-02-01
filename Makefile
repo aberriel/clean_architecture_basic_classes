@@ -86,8 +86,7 @@ install: clean ## install the package to the active Python's site-packages
 
 
 upload: clean ## publish to devpi
-	pip install devpi-client
-	devpi use https://pypi.org/ --always-set-cfg=yes
-	devpi login $(DEVPI_USER) --password=$(DEVPI_PASSWORD)
-	python setup.py bdist_wheel
-	devpi upload --from-dir dist/
+	pip install --upgrade setuptools wheel
+	python setup.py sdist bdist_wheel
+	pip install --upgrade twine
+	python -m twine upload dist/*
