@@ -1,7 +1,6 @@
 from unittest.mock import MagicMock, patch
 
-from clean_architecture_basic_classes.basic_routes.basic_routes import \
-    BasicEntityRoutes
+from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
 
 
 class Patches:
@@ -17,7 +16,6 @@ def test_ber_object_name():
     mock_class = MagicMock()
     ber = BasicEntityRoutes(mock_adapter, mock_class)
     result = ber._object_name
-
     assert result == 'klasse'
 
 
@@ -28,7 +26,6 @@ def test_ber_instantiate_interactor(mock_inter, mock_req):
     mock_class = MagicMock()
     ber = BasicEntityRoutes(mock_adapter, mock_class)
     result = ber._instantiate_post_interactor(mock_req)
-
     mock_inter.assert_called_with(mock_req, mock_adapter, mock_class)
     assert result == mock_inter.return_value
 

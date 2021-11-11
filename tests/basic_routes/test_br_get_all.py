@@ -3,10 +3,8 @@ from unittest.mock import MagicMock, patch
 from marshmallow import ValidationError
 from pytest import raises
 
-from clean_architecture_basic_classes.basic_routes.basic_routes import \
-    BasicEntityRoutes
-from clean_architecture_basic_classes.basic_routes.exceptions import \
-    ValidationErrorException, UnexpectedErrorException
+from clean_architecture_basic_classes.basic_routes.basic_routes import BasicEntityRoutes
+from clean_architecture_basic_classes.basic_routes.exceptions import ValidationErrorException, UnexpectedErrorException
 
 
 class Patches:
@@ -32,8 +30,7 @@ def test_ber_get_all(mock_inter, mock_req):
 
 
 @patch(Patches.GetAllRequest)
-@patch(Patches.GetAllInteractor, return_value=MagicMock(
-    run=MagicMock(side_effect=ValidationError('oops'))))
+@patch(Patches.GetAllInteractor, return_value=MagicMock(run=MagicMock(side_effect=ValidationError('oops'))))
 def test_ber_get_all_validate_error(mock_inter, mock_req):
     mock_adapter = MagicMock()
     mock_class = MagicMock()
@@ -48,8 +45,7 @@ def test_ber_get_all_validate_error(mock_inter, mock_req):
 
 
 @patch(Patches.GetAllRequest)
-@patch(Patches.GetAllInteractor, return_value=MagicMock(
-    run=MagicMock(side_effect=ValueError('Errado!'))))
+@patch(Patches.GetAllInteractor, return_value=MagicMock(run=MagicMock(side_effect=ValueError('Errado!'))))
 def test_ber_get_all_general_error(mock_inter, mock_req):
     mock_adapter = MagicMock()
     mock_class = MagicMock()

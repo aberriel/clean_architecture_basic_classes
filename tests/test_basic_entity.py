@@ -4,10 +4,8 @@ from marshmallow import fields, post_load
 from pytest import fixture
 
 from clean_architecture_basic_classes import BasicEntity
-from clean_architecture_basic_classes.basic_domain.basic_entity import \
-    missing_id
-from clean_architecture_basic_classes.basic_domain.util import \
-    generic_serialize_roundtrip_test
+from clean_architecture_basic_classes.basic_domain.basic_entity import missing_id
+from clean_architecture_basic_classes.basic_domain.util import generic_serialize_roundtrip_test
 
 
 @fixture
@@ -21,8 +19,8 @@ def dummy_entity():
 @fixture
 def dummy_complex_entity():
     class DummyEntity(BasicEntity):
-        def __init__(self, entity_id, texto, numero):
-            super(DummyEntity, self).__init__(entity_id)
+        def __init__(self, _id, texto, numero):
+            super(DummyEntity, self).__init__(_id)
             self.texto = texto
             self.numero = numero
 
@@ -43,45 +41,37 @@ def dummy_entity_adapted():
         pass
 
     adapter = MagicMock()
-
     entity = DummyEntity()
     entity.set_adapter(adapter)
-
     return entity, adapter
 
 
 def test_basic_entity(dummy_entity):
     entity = dummy_entity()
-
     assert isinstance(entity, BasicEntity)
 
 
 def test_basic_entity_save(dummy_entity_adapted):
     entity, adapter = dummy_entity_adapted
-
     entity.save()
     adapter.save.assert_called_once()
 
 
 def test_basic_entity_update(dummy_entity_adapted):
     entity, adapter = dummy_entity_adapted
-
     entity.update()
-
-    adapter.save.assert_called_with({'entity_id': entity.entity_id})
+    adapter.save.assert_called_with({'_id': entity._id})
 
 
 def test_basic_entity_delete(dummy_entity_adapted):
     entity, adapter = dummy_entity_adapted
-
     entity.delete()
-
     adapter.delete.assert_called_once()
 
 
 def test_basic_entity_eq(dummy_complex_entity):
     entity1 = dummy_complex_entity(None, 'texto', 42)
-    entity2 = dummy_complex_entity(entity1.entity_id, 'texto', 42)
+    entity2 = dummy_complex_entity(entity1._id, 'texto', 42)
     entity3 = dummy_complex_entity(None, 'outro texto', 42)
 
     assert entity1 == entity2
@@ -97,11 +87,11 @@ def test_basic_entity_serialize(dummy_complex_entity):
 def test_basic_entity_hashable(dummy_complex_entity):
     e1 = dummy_complex_entity(None, 'resposta', 42)
     e2 = dummy_complex_entity(None, 'outro', 17)
-    e3 = dummy_complex_entity(e1.entity_id, 'novo estado', 42)
+    e3 = dummy_complex_entity(e1._id, 'novo estado', 42)
     s = {e1, e2, e3}
 
     assert e1 != e2
-    assert e1.entity_id != e2.entity_id
+    assert e1._id != e2._id
     assert len(s) == 2
 
 

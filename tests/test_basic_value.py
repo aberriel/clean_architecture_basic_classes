@@ -1,7 +1,6 @@
 from marshmallow import fields, post_load
 from clean_architecture_basic_classes import BasicValue
-from clean_architecture_basic_classes.basic_domain.util import \
-    generic_serialize_roundtrip_test
+from clean_architecture_basic_classes.basic_domain.util import generic_serialize_roundtrip_test
 
 
 def test_basic_value_serialize():

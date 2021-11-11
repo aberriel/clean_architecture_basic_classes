@@ -20,9 +20,7 @@ class BasicPutResponseModel:
 
 
 class BasicPutInteractor:
-    def __init__(self, request: BasicPutRequestModel,
-                 adapter_instance,
-                 entity_class):
+    def __init__(self, request: BasicPutRequestModel, adapter_instance, entity_class):
         self.request = request
         self.adapter_instance = adapter_instance
         self.entity_class = entity_class

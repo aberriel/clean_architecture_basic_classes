@@ -21,8 +21,8 @@ def dummy_adapter_class():
             return self._class.load(self.fake_db[item_id])
 
         def save(self, serialized_data):
-            entity_id = serialized_data['entity_id'] or str(uuid4())
-            serialized_data['entity_id'] = entity_id
+            entity_id = serialized_data['_id'] or str(uuid4())
+            serialized_data['_id'] = entity_id
             self.fake_db[entity_id] = serialized_data
             return entity_id
 
@@ -38,26 +38,24 @@ def dummy_adapter_class():
 @fixture
 def dummy_serializable():
     class DummySerializable:
-        def __init__(self, entity_id, nome, idade):
-            self.entity_id = entity_id
+        def __init__(self, _id, nome, idade):
+            self._id = _id
             self.nome = nome
             self.idade = idade
 
         def dump(self):
-            return dict(entity_id=self.entity_id,
-                        nome=self.nome,
-                        idade=self.idade)
+            return dict(_id=self._id, nome=self.nome, idade=self.idade)
 
         @classmethod
         def load(cls, data):
             return cls(**data)
 
         def save(self, adapter):
-            self.entity_id = adapter.save(self.dump())
-            return self.entity_id
+            self._id = adapter.save(self.dump())
+            return self._id
 
         def __eq__(self, other):
-            return self.entity_id == other.entity_id
+            return self._id == other._id
 
     return DummySerializable
 
@@ -65,9 +63,7 @@ def dummy_serializable():
 def test_basic_persist_adapter(dummy_adapter_class, dummy_serializable):
     fake_db = {}
     logger = MagicMock
-    adapter = dummy_adapter_class(adapted_class=dummy_serializable,
-                                  fake_db=fake_db,
-                                  logger=logger)
+    adapter = dummy_adapter_class(adapted_class=dummy_serializable, fake_db=fake_db, logger=logger)
 
     assert adapter.logger == logger
 
@@ -89,8 +85,8 @@ def test_basic_persist_adapter(dummy_adapter_class, dummy_serializable):
     lista = adapter.list_all()
     assert isinstance(lista, list)
     assert all([isinstance(x, dummy_serializable) for x in lista])
-    assert lista[0].entity_id in [id1, id2]
-    assert lista[1].entity_id in [id1, id2]
+    assert lista[0]._id in [id1, id2]
+    assert lista[1]._id in [id1, id2]
 
     adapter.delete(id1)
     assert id1 not in fake_db

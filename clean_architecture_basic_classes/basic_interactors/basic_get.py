@@ -2,8 +2,8 @@ from clean_architecture_basic_classes import BasicEntity
 
 
 class BasicGetRequestModel:
-    def __init__(self, entity_id):
-        self.entity_id = entity_id
+    def __init__(self, _id):
+        self._id = _id
 
 
 class BasicGetResponseModel:
@@ -15,13 +15,11 @@ class BasicGetResponseModel:
 
 
 class BasicGetInteractor:
-    def __init__(self,
-                 request: BasicGetRequestModel,
-                 adapter_instance):
+    def __init__(self, request: BasicGetRequestModel, adapter_instance):
         self.request = request
         self.adapter_instance = adapter_instance
 
     def run(self):
-        entity = self.adapter_instance.get_by_id(self.request.entity_id)
+        entity = self.adapter_instance.get_by_id(self.request._id)
         response = BasicGetResponseModel(entity)
         return response()

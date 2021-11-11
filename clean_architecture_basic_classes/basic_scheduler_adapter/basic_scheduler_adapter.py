@@ -7,10 +7,7 @@ class TaskNotFoundException(BaseException):
 
 
 class BasicTaskSchedulerAdapter(ABC):
-    def __init__(self,
-                 name: str,
-                 identifier: str,
-                 execution_time: datetime):
+    def __init__(self, name: str, identifier: str, execution_time: datetime):
         self.name = name
         self.identifier = identifier
         self.execution_time = execution_time

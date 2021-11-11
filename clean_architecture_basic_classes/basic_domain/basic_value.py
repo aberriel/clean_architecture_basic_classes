@@ -10,8 +10,7 @@ class BasicValue:
         return self.Schema().dump(self)
 
     def __eq__(self, other):
-        return all([getattr(self, attr) == getattr(other, attr)
-                    for attr in self.Schema().fields.keys()])
+        return all([getattr(self, attr) == getattr(other, attr) for attr in self.Schema().fields.keys()])
 
     class Schema(Schema):
         pass

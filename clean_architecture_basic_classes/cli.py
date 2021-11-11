@@ -10,8 +10,7 @@
 #     args = parser.parse_args()
 #
 #     print("Arguments: " + str(args._))
-#     print("Replace this message by putting your code into "
-#           "clean_architecture_basic_classes.cli.main")
+#     print("Replace this message by putting your code into clean_architecture_basic_classes.cli.main")
 #     return 0
 #
 #

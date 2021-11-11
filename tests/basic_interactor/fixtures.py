@@ -4,8 +4,8 @@ from uuid import uuid4
 
 
 class FakeEntity(BasicEntity):
-    def __init__(self, entity_id=None, nome=None, idade=None):
-        super(FakeEntity, self).__init__(entity_id)
+    def __init__(self, _id=None, nome=None, idade=None):
+        super(FakeEntity, self).__init__(_id)
         self.nome = nome
         self.idade = idade
 
@@ -23,9 +23,9 @@ class FakeAdapter:
         self.fake_db = fake_db
 
     def save(self, json_data):
-        entity_id = json_data.get('entity_id', str(uuid4()))
-        json_data.update({'entity_id': entity_id})
-        self.fake_db[json_data['entity_id']] = json_data
+        entity_id = json_data.get('_id', str(uuid4()))
+        json_data.update({'_id': entity_id})
+        self.fake_db[json_data['_id']] = json_data
 
     def list_all(self):
         objects = [FakeEntity.from_json(x) for x in self.fake_db.values()]

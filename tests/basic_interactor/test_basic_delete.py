@@ -11,7 +11,7 @@ def test_basic_delete():
     adapter = FakeAdapter(fake_db)
     make_context(adapter)
 
-    entity_to_delete = list(fake_db.values())[0]['entity_id']
+    entity_to_delete = list(fake_db.values())[0]['_id']
     deleted_name = fake_db[entity_to_delete]['nome']
 
     request = BasicDeleteRequestModel(entity_to_delete)

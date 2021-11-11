@@ -19,9 +19,7 @@ class BasicPostResponseModel:
 
 
 class BasicPostInteractor:
-    def __init__(self, request: BasicPostRequestModel,
-                 adapter_instance,
-                 entity_class):
+    def __init__(self, request: BasicPostRequestModel, adapter_instance, entity_class):
         self.request = request
         self.adapter_instance = adapter_instance
         self.entity_class = entity_class
@@ -35,8 +33,8 @@ class BasicPostInteractor:
         :return: Instância da entidade.
         """
         kw = self.request.json_data
-        if 'entity_id' not in kw.keys():
-            kw.update({'entity_id': None})
+        if '_id' not in kw.keys():
+            kw.update({'_id': None})
         entity = self.entity_class.from_json(kw)
         return entity
 

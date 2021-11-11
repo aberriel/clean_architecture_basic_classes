@@ -27,9 +27,7 @@ class BasicGetAllRequestModel:
 
 
 class BasicGetAllResponseModel:
-    def __init__(self,
-                 entities: List[BasicEntity],
-                 initial, final, total, unit):
+    def __init__(self, entities: List[BasicEntity], initial, final, total, unit):
         self.entities: List[BasicEntity] = entities
         self.initial = initial
         self.final = final
@@ -38,18 +36,11 @@ class BasicGetAllResponseModel:
 
     def __call__(self):
         entities = [x.to_json() for x in self.entities]
-
-        return RangedList(entities,
-                          self.initial,
-                          self.final,
-                          self.total,
-                          self.unit)
+        return RangedList(entities, self.initial, self.final, self.total, self.unit)
 
 
 class BasicGetAllInteractor:
-    def __init__(self,
-                 request: BasicGetAllRequestModel,
-                 adapter_instance):
+    def __init__(self, request: BasicGetAllRequestModel, adapter_instance):
         self.adapter_instance = adapter_instance
         self.request: BasicGetAllRequestModel = request
 
@@ -57,26 +48,17 @@ class BasicGetAllInteractor:
     def item_range_by_page(per_page, page):
         inicio = (page - 1) * per_page
         fim = inicio + per_page
-
         return inicio, fim
 
     def run(self):
         result = self._list_items()
-
         ordenado = self._get_sorted_items(result)
-
         fim, inicio, paginado = self._get_paginated_items(ordenado)
-
-        response = BasicGetAllResponseModel(paginado,
-                                            inicio,
-                                            fim-1,
-                                            len(result),
-                                            self.request.unit)
+        response = BasicGetAllResponseModel(paginado, inicio, fim-1, len(result), self.request.unit)
         return response()
 
     def _get_paginated_items(self, ordenado):
-        inicio, fim = self.item_range_by_page(self.request.pagination_per_page,
-                                              self.request.pagination_page)
+        inicio, fim = self.item_range_by_page(self.request.pagination_per_page, self.request.pagination_page)
         paginado = ordenado[inicio:fim]
         return fim, inicio, paginado
 
@@ -92,10 +74,7 @@ class BasicGetAllInteractor:
         return ordenado
 
     def _sort_items(self, result):
-        ordenado = sorted(
-            result,
-            key=lambda x: self._get_sort_key(x),
-            reverse=self.request.sort_order == 'DESC')
+        ordenado = sorted(result, key=lambda x: self._get_sort_key(x), reverse=self.request.sort_order == 'DESC')
         return ordenado
 
     def _get_sort_key(self, x):
@@ -103,8 +82,7 @@ class BasicGetAllInteractor:
         return reduce(getattr, fields, x)
 
     def _list_items(self):
-        filtered = (bool(self.request.filter_field) and
-                    bool(self.request.filter_value))
+        filtered = (bool(self.request.filter_field) and bool(self.request.filter_value))
         fn_map = {True: self._list_filtered, False: self._list_unfiltered}
         fn_list = fn_map[filtered]
         result = fn_list()
@@ -116,6 +94,5 @@ class BasicGetAllInteractor:
 
     def _list_filtered(self):
         arg_key = f'{self.request.filter_field}__contains'
-        result = self.adapter_instance.filter(
-            **{arg_key: self.request.filter_value})
+        result = self.adapter_instance.filter(**{arg_key: self.request.filter_value})
         return result

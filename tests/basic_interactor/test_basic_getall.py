@@ -1,13 +1,8 @@
 from unittest.mock import MagicMock
 
-from clean_architecture_basic_classes.basic_interactors.basic_get_all import \
-    BasicGetAllRequestModel
-from tests.basic_interactor.fixtures import (
-    FakeAdapter,
-    make_context
-)
-from clean_architecture_basic_classes.basic_interactors import \
-    BasicGetAllInteractor
+from clean_architecture_basic_classes.basic_interactors.basic_get_all import BasicGetAllRequestModel
+from tests.basic_interactor.fixtures import FakeAdapter, make_context
+from clean_architecture_basic_classes.basic_interactors import BasicGetAllInteractor
 
 
 def test_basic_getall():
@@ -31,9 +26,7 @@ def test_basic_getall_filter():
     fake_db = {}
     adapter = FakeAdapter(fake_db)
     make_context(adapter)
-    adapter.filter = MagicMock(return_value=[
-        mock_entity('siclano')
-    ])
+    adapter.filter = MagicMock(return_value=[mock_entity('siclano')])
 
     params = dict(filter_field='nome', filter_value='siclano')
     request = BasicGetAllRequestModel(params)
@@ -48,11 +41,7 @@ def test_basic_getall_sort_asc():
     fake_db = {}
     adapter = FakeAdapter(fake_db)
     make_context(adapter)
-    adapter.filter = MagicMock(return_value=[
-        mock_entity('beltrano'),
-        mock_entity('fulano'),
-        mock_entity('siclano'),
-    ])
+    adapter.filter = MagicMock(return_value=[mock_entity('beltrano'), mock_entity('fulano'), mock_entity('siclano')])
 
     params = dict(sort_field='nome', sort_order='ASC')
     request = BasicGetAllRequestModel(params)
@@ -67,11 +56,7 @@ def test_basic_getall_sort_desc():
     fake_db = {}
     adapter = FakeAdapter(fake_db)
     make_context(adapter)
-    adapter.filter = MagicMock(return_value=[
-        mock_entity('siclano'),
-        mock_entity('fulano'),
-        mock_entity('beltrano')
-    ])
+    adapter.filter = MagicMock(return_value=[mock_entity('siclano'), mock_entity('fulano'), mock_entity('beltrano')])
 
     params = dict(sort_field='nome', sort_order='DESC')
     request = BasicGetAllRequestModel(params)

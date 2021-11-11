@@ -50,10 +50,8 @@ class BasicPersistAdapter(ABC):
         igual à "nome@dom.com", o filtro deverá ser chamado assim:
             result = adapter.filter(email__eq="nome@dom.com")
 
-        :raises ValueError(Comparador inválido): se o comparador especificado
-            não for um dos seguintes:
-               [begins_with, between, contains, eq, exists, gt, gte, is_in, lt,
-                lte, ne, not_exists]
+        :raises ValueError(Comparador inválido): se o comparador especificado não for um dos seguintes:
+               [begins_with, between, contains, eq, exists, gt, gte, is_in, lt, lte, ne, not_exists]
 
         :return: Lista de objetos
         """

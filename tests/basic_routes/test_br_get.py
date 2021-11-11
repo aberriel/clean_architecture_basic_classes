@@ -32,8 +32,7 @@ def test_ber_get(mock_inter, mock_req):
 
 
 @patch(Patches.GetRequest)
-@patch(Patches.GetInteractor, return_value=MagicMock(
-    run=MagicMock(side_effect=ValidationError('oops'))))
+@patch(Patches.GetInteractor, return_value=MagicMock(run=MagicMock(side_effect=ValidationError('oops'))))
 def test_ber_get_validate_error(mock_inter, mock_req):
     mock_adapter = MagicMock()
     mock_class = MagicMock()
@@ -42,12 +41,11 @@ def test_ber_get_validate_error(mock_inter, mock_req):
     with raises(ValidationErrorException) as excinfo:
         ber.get_by_id('não importa')
 
-    assert 'Erro de validação obtendo' in str(excinfo.value)
+    assert 'Validation error while try to get' in str(excinfo.value)
 
 
 @patch(Patches.GetRequest)
-@patch(Patches.GetInteractor, return_value=MagicMock(
-    run=MagicMock(side_effect=ValueError('Errado!'))))
+@patch(Patches.GetInteractor, return_value=MagicMock(run=MagicMock(side_effect=ValueError('Errado!'))))
 def test_ber_get_general_error(mock_inter, mock_req):
     mock_adapter = MagicMock()
     mock_class = MagicMock()
@@ -56,14 +54,13 @@ def test_ber_get_general_error(mock_inter, mock_req):
     with raises(UnexpectedErrorException) as excinfo:
         ber.get_by_id('não importa')
 
-    assert 'Erro obtendo' in str(excinfo.value)
+    assert 'Error while get' in str(excinfo.value)
     assert 'Errado!' in str(excinfo.value)
     assert 'ValueError' in str(excinfo.value)
 
 
 @patch(Patches.GetRequest)
-@patch(Patches.GetInteractor, return_value=MagicMock(
-    run=MagicMock(return_value=None)))
+@patch(Patches.GetInteractor, return_value=MagicMock(run=MagicMock(return_value=None)))
 def test_ber_get_not_found(mock_inter, mock_req):
     mock_adapter = MagicMock()
     mock_class = MagicMock()

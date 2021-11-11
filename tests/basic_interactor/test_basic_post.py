@@ -27,7 +27,7 @@ def test_basic_post():
 
     assert result['nome'] == 'novo nome'
     assert result['idade'] == 42
-    assert result['entity_id']
+    assert result['_id']
 
     assert len(fake_db) == 4
     assert 'novo nome' in [x['nome'] for x in fake_db.values()]
