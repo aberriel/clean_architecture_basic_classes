@@ -1,4 +1,4 @@
 requirements = [
-    'marshmallow==3.5.1',
+    'marshmallow==3.14.0',
     'bumpversion==0.6.0'
 ]

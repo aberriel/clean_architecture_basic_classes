@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
 
 setup(
     name='clean_architecture_basic_classes',
-    version='0.1.2',
+    version='0.1.3',
     author="Anselmo Lira (https://github.com/aberriel)",
     author_email='anselmo.lira1@gmail.com',
     description="Classes to implement a Clean Architecture Python Framework",
